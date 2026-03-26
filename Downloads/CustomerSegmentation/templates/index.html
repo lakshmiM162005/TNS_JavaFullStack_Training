@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Segmentation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Customer Segmentation - Mall Dataset</h1>
+
+    <h2>Clustered Customers (first 5 rows)</h2>
+    {{ table_html|safe }}
+
+    <h2>Cluster Visualization</h2>
+    <img src="{{ url_for('static', filename='cluster_plot.png') }}" alt="Cluster Plot">
+
+    <h2>Enter Customer Details</h2>
+    <form action="{{ url_for('predict') }}" method="post">
+        Age: <input type="number" name="age" required><br><br>
+        Annual Income (k$): <input type="number" name="income" required><br><br>
+        Spending Score (1-100): <input type="number" name="score" required><br><br>
+        <input type="submit" value="Predict Cluster">
+    </form>
+
+    <h2>Prediction History</h2>
+    {{ history_html|safe }}
+</body>
+</html>
